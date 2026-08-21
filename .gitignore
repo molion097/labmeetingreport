@@ -1,0 +1,29 @@
+# The actual weekly deliverables live in OneDrive (synced via the CGMlabreport
+# junction) and are never tracked here. This repo only holds the instructions,
+# templates, and lightweight markdown drafts needed to reproduce the workflow.
+/CGMlabreport/
+
+# Pre-existing local tooling/scaffolding unrelated to this workflow (bundled
+# skill plugins with their own node_modules/__pycache__/logs, a separate
+# generic agent framework). Not "our instruction/setting" for this project
+# and far too large to version here.
+/.claude/
+/.github/
+
+# Downloaded source papers and extracted text dumps are large and easy to
+# re-fetch, don't belong in git history.
+*.pdf
+*.txt
+
+# Word documents are generally excluded (final reports live in OneDrive), with
+# one deliberate exception below: the pandoc reference-doc that defines the
+# house style. It's small (~12KB) and required for a fresh session to
+# reproduce identical formatting, without it pandoc falls back to its own
+# default styling and the 2-page-limit tuning done here is lost.
+*.docx
+*.doc
+!_workdir/_template/reference.docx
+
+# Misc
+.DS_Store
+Thumbs.db
