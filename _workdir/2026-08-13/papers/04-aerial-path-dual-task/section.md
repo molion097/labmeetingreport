@@ -1,0 +1,6 @@
+## Aerial Path Planning for 3D Urban Scene Reconstruction with Dual-Task Reconstructability Learning and Adaptive Viewpoint Selection
+
+Tianrui Shen, Yingmei Wei, Lai Kang, Shanshan Wan, Haixuan Wang, Yee-Hong Yang. ISPRS Journal of Photogrammetry and Remote Sensing, vol. 227, 2025. https://doi.org/10.1016/j.isprsjprs.2025.05.015
+
+This is a direct follow-on to the TOG 2022 reconstructability paper above, from a different group. That earlier line trains reconstruction accuracy and completeness as two separate prediction phases; this paper argues the two signals are correlated aspects of the same underlying reconstructability and should be predicted jointly. A single network with soft parameter sharing predicts both at once, with the two loss terms weighted by learnable parameters instead of hand-tuned ones, and the resulting scores drive an adaptive step that repositions and prunes an initial viewpoint set before it's connected into a flight path. Reported results: about 3.6% higher F-score than prior planning methods while using 15% fewer images, and 6% higher than oblique photography with 40% less image data. I could only get the abstract and metadata for this one, ScienceDirect blocked automated access despite it being marked open access, so architecture details and ablations aren't confirmed yet.
+

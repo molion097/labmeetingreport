@@ -1,0 +1,24 @@
+# Lab Meeting - August 20, 2026
+
+These papers all touch music generation or manipulation driven by a secondary signal rather than built from scratch. Dance2MIDI and PACE both tackle dance-to-music generation but from different angles, one builds a two-stage generate-then-inpaint pipeline over symbolic MIDI, the other conditions a diffusion model on motion split by body part and by speed. I couldn't fully verify PACE, it's blocked behind OpenReview and may still be under review, so that one comes with more caveats than usual. Mosaikbox is the odd one out, it isn't generation at all, just automatic DJ mixing done through source separation and rule-based editing, but it's a useful contrast to the two learned approaches above it.
+
+## Dance2MIDI: Dance-driven Multi-Instrument Music Generation
+
+Bo Han, Yuheng Li, Yixuan Shen, Yi Ren, Feilin Han. arXiv 2301.09080, also Computational Visual Media 2024. https://arxiv.org/abs/2301.09080
+
+Dance-to-music generation, composing a soundtrack for a dance video, is far less studied than the reverse direction, and prior work only generated monophonic notes or raw audio rather than full polyphonic, multi-instrument music, partly because no dataset paired dance video with multi-instrument MIDI. Dance2MIDI splits generation into two stages: a transformer decoder autoregressively generates a drum track conditioned on motion and style features extracted from body keypoints, through a cross-attention module the authors call Video-Guided MIDI, then a BERT-style bidirectional transformer fills in the remaining instrument tracks as a masked-token inpainting problem, using a masking strategy built around musical measures rather than random tokens. The authors also built D2MIDI, a new dataset of about 72,000 paired 30-second clips across 6 dance genres, to make training possible at all. Against CMT, Dance2Music, and D2M-GAN, Dance2MIDI scores clearly higher on beat alignment (0.65 vs 0.15-0.59) and wins a subjective consistency study with professional choreographers. The two-stage design is clean and the dataset is itself a useful contribution, though the listening study used only five evaluators and the system only handles a single dancer, no group choreography.
+
+
+## PACE: Part-Wise Slow-Fast Conditioning for Dance-to-Music Generation
+
+Authors unverified (see note below). ICLR 2026, OpenReview submission. https://openreview.net/forum?id=1Ip4pZoHTH
+
+I couldn't get past OpenReview's bot check for this one, every fetch method hit the same wall, there's no arXiv copy, and it doesn't appear on any ICLR 2026 accepted list yet, so it may still be under review. What follows is reconstructed from the title and an abstract snippet in search results, so treat it as provisional. The claimed idea: dance-to-music diffusion models usually treat the dancer's whole body as one motion signal, losing the fact that different body parts carry different rhythmic information and that a single trace mixes slow and fast movement together. PACE instead splits the body into five parts, computes a kinetic energy signal per part, filters each into slow and fast frequency bands, and uses that decomposition to condition a latent diffusion model. The abstract claims consistent improvement over prior methods on AIST++ and TikTok data, but no numbers are available. Someone with OpenReview access should pull the real PDF before this gets presented.
+
+
+## Mosaikbox: Improving Fully Automatic DJ Mixing Through Rule-Based Stem Modification and Precise Beat-Grid Estimation
+
+Robert Sowula, Peter Knees. ISMIR 2024, pp. 850-857. https://repositum.tuwien.at/handle/20.500.12708/212628
+
+Automatic DJ mixing systems still fall short of a human DJ mainly because their similarity measures treat two songs as compatible once tempo, key, and timbre roughly line up, even when specific elements clash, like a stray off-beat drum or overlapping vocals. Mosaikbox separates each track into stems with HT Demucs and applies rule-based fixes: it attenuates a clashing drum or vocal stem during a transition, on top of a more precise beat-grid estimator that jointly optimizes tempo and downbeat position to avoid the octave errors, locking onto half or double the true BPM, that plague prior tempo trackers. Tested on 250 drum and bass tracks, the beat-grid estimator underperforms a state-of-the-art tempo tracker at loose tolerance but is far more accurate at strict tolerance, meaning it nails the exact tempo and downbeat far more often. In a 30-person listening study, every Mosaikbox variant beat the AutoMashUpper baseline, and adding stem modification significantly improved transition ratings over the base version, while an added lyric-similarity term made no measurable difference. Cleanly ablated with proper statistical testing, though tested on only one genre and a small, mostly novice listening panel.
+
