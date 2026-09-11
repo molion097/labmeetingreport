@@ -7,13 +7,14 @@ This is not "2 pages per paper" - it's 2 pages for the whole week's file.
 
 Every week's file opens with a short personal opening paragraph (see OPENING
 below), then one paragraph per paper. Budget words accordingly before writing:
-set aside ~80-100 words for the opening, then divide the rest of the roughly
-1300-word total (90% of the ~1450-word 2-page capacity measured for this
-doc's current font/margins, see INSTRUCTIONS.md) by the number of papers that
-week. A 4-paper week gets ~280-300 words per paper. A 2-paper week can afford
-~550-600 words per paper. Always verify the actual page count after
+set aside ~80-100 words for the opening, then divide the rest of a roughly
+1150-word total (a 1325-word file measured 3 pages on 2026-09-10, so treat
+1150-1200 as the real safe ceiling, not 1300) by the number of papers that
+week. A 4-paper week gets ~230-250 words per paper. A 2-paper week can afford
+~450-500 words per paper. Always verify the actual page count after
 converting (INSTRUCTIONS.md has the Word COM check) rather than trusting a
-word-count estimate alone.
+word-count estimate alone, and if it comes back over 2 pages, trim every
+paragraph a bit rather than cutting one paper's summary down disproportionately.
 
 OPENING: one short first-person paragraph right after the date header, before
 any paper sections. This is the "today I'm presenting..." framing a person

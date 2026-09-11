@@ -94,13 +94,14 @@ easier reading/extraction.
 4. Convert to docx with the pandoc command above, output straight into
    `CGMlabreport/<YYYY-MM-DD>.docx`.
 5. **Verify the real page count, don't trust a word-count guess.** Word count
-   is not a reliable proxy here, an earlier pass estimated ~550 words/page and
-   was wrong by roughly 2x once actually measured, producing a 3-page doc. The
+   is not a reliable proxy here. An earlier pass estimated ~550 words/page and
+   was wrong by roughly 2x once actually measured, producing a 3-page doc; the
    current `reference.docx` (10.5pt body font, 0.9in margins, 6pt paragraph
-   spacing, no horizontal rules between papers) was tightened specifically to
-   fix that, and as measured, holds roughly 1400-1500 words in 2 pages. Target
-   **90% of that, about 1300 words max** for the whole week's `summary.md`
-   (title + all papers combined) as a starting budget, but always confirm the
+   spacing, no horizontal rules between papers) was tightened to fix that. A
+   later 1325-word file (2026-09-10) still measured 3 pages, so the safe
+   ceiling is lower than it first looked: **target about 1150-1200 words max**
+   for the whole week's `summary.md` (title + opening + all papers combined),
+   not 1300. Always confirm the
    actual page count after converting, using Word COM (requires Microsoft
    Word installed, which it is on this machine):
 
